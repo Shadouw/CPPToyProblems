@@ -6,8 +6,17 @@ using namespace std;
 
 int main ( int argc, char *argv[] )
 {
-    assert ( argc == 2 );
-    unsigned long maxnumber = atol(argv[1]);
+    unsigned long maxnumber = 0;
+
+    if ( 2 == argc )
+        maxnumber = atol(argv[1]);
+    else
+    {
+        cout << "Enter the highest number to test: ";
+        cin >> maxnumber;
+    }
+
+
 
     // Create the sieve end initialize all numbers as prime (true)
     bool *numbers = new bool[maxnumber+1];
