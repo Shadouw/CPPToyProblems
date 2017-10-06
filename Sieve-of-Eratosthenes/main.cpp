@@ -1,5 +1,5 @@
 /*
- * Sieve of Erathosthenes
+ * Sieve of Eratosthenes
  *
  */
 

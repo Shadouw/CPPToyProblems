@@ -7,9 +7,15 @@ cmake_minimum_required (VERSION 3.9)
 # Name the project after the problem
 project(${problem} CXX)
 
+# Add all cpp and h files
+file(GLOB SRC_FILES
+    "*.h"
+    "*.cpp"
+)
+
 # Enable C++11 features on gcc/clang
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "(GNU|Clang)")
     set(CMAKE_CXX_FLAGS "-std=c++11")
 endif()
 
-add_executable(${problem} main.cpp)
+add_executable(${problem} ${SRC_FILES})

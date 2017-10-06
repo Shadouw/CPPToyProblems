@@ -1,3 +1,8 @@
+/*
+ * Queens-Problem
+ *
+ */
+
 #include <iostream>
 #include <cassert>
 
