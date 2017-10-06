@@ -1,3 +1,8 @@
+/*
+ * Sieve of Erathosthenes
+ *
+ */
+
 #include <iostream>
 #include <cassert>
 #include <cmath>
