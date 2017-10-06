@@ -11,10 +11,10 @@ using namespace std;
 
 int main ( int argc, char *argv[] )
 {
-    unsigned long maxnumber = 0;
+    unsigned long long maxnumber = 0;
 
     if ( 2 == argc )
-        maxnumber = atol(argv[1]);
+        maxnumber = atoll(argv[1]);
     else
     {
         cout << "Enter the highest number to test: ";
@@ -25,7 +25,7 @@ int main ( int argc, char *argv[] )
 
     // Create the sieve end initialize all numbers as prime (true)
     bool *numbers = new bool[maxnumber+1];
-    for ( unsigned long n = 0; n<=maxnumber; ++n )
+    for ( unsigned long long n = 0; n<=maxnumber; ++n )
         numbers[n] = true;
 
     // Set 0 and 1 as not-prime
@@ -33,9 +33,9 @@ int main ( int argc, char *argv[] )
     numbers[1] = false;
 
     // Lets count the found primes
-    unsigned long count = 0;
+    unsigned long long count = 0;
 
-    for ( unsigned long n = 2; n<=maxnumber; ++n )
+    for ( unsigned long long n = 2; n<=maxnumber; ++n )
     {
         if ( numbers[n] )
         {
@@ -46,7 +46,7 @@ int main ( int argc, char *argv[] )
             ++count;
 
             // Delete all multiples
-            for ( unsigned long m = 2*n; m<=maxnumber; m+=n )
+            for ( unsigned long long m = 2*n; m<=maxnumber; m+=n )
                 numbers[m] = false;
         }
     }
