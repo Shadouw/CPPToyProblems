@@ -9,32 +9,31 @@ int main ( int argc, char *argv[] )
     assert ( argc == 2 );
     unsigned long maxnumber = atol(argv[1]);
 
-    // Store all numbers in an array
-    unsigned long *numbers = new unsigned long[maxnumber+1];
+    // Create the sieve end initialize all numbers as prime (true)
+    bool *numbers = new bool[maxnumber+1];
     for ( unsigned long n = 0; n<=maxnumber; ++n )
-        numbers[n] = n;
+        numbers[n] = true;
 
-    // Since we cannot easily delete positions I use 0 for a deletion.
-    // Delete 1
-    numbers[1] = 0;
+    // Set 0 and 1 as not-prime
+    numbers[0] = false;
+    numbers[1] = false;
 
-    // Lets count the primes
+    // Lets count the found primes
     unsigned long count = 0;
 
     for ( unsigned long n = 2; n<=maxnumber; ++n )
     {
-        if ( 0 != numbers[n] )
+        if ( numbers[n] )
         {
             // We found a new prime
-            cout << n << " ";
+            cout << n << " " << endl;
 
             // Count it
-            if ( ++count % 10 == 0 )
-                cout << endl;
+            ++count;
 
             // Delete all multiples
             for ( unsigned long m = 2*n; m<=maxnumber; m+=n )
-                numbers[m] = 0;
+                numbers[m] = false;
         }
     }
     cout << endl;
