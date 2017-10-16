@@ -14,11 +14,11 @@ using namespace std;
 // Columns:          0 -  7
 int aCheckBoard[8][8] = { 0 };
 
-void printboard ()
+void printboard ( bool closed )
 {
     static int solution = 0;
 
-    cout << "Solution #" << ++solution << endl;
+    cout << "Solution #" << ++solution << " (" << ( closed ? "closed" : "open" ) << ")" << endl;
 
     for ( int row=0; row<8; ++row )
     {
@@ -36,7 +36,7 @@ void addKnight ( int number, int row, int column )
     assert ( 0<=row    && row<=7    );
     assert ( 0<=column && column<=7 );
 
-    // A night can jump to one of eight fields from its current position:
+    // A knight can jump to one of eight fields from its current position:
     //   -2 -1  0  1  2
     // -2    x     x       -2/-1  -2/1
     // -1 x           x    -1/-2  -1/2
@@ -61,7 +61,27 @@ void addKnight ( int number, int row, int column )
 
                 // Is it the last queen in last row?
                 if ( 64 == number+1 )
-                    printboard ();
+                {
+                    // Closed or Open?
+                    // In a closed way the knight can jump from field 64 to field 1
+                    bool closed = false;
+                    for ( int r1 = -2; r1 <= +2; ++r1 )
+                    {
+                        if ( 0 == r1 || row+r+r1 < 0 || row+r+r1 > 7 )
+                            continue;
+
+                        for ( int c1 = -2; c1 <= +2; ++c1 )
+                        {
+                            if ( 0 == c1 || column+c+c1 < 0 || column+c+c1 > 7 || abs(r1)==abs(c1) )
+                                continue;
+
+                            if ( 1 == aCheckBoard[row+r+r1][column+c+c1] )
+                                closed = true;
+                        }
+                    }
+
+                    printboard ( closed );
+                }
                 else
                     addKnight ( number+1, row+r, column+c );
 
