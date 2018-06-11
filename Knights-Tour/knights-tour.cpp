@@ -80,7 +80,8 @@ void addKnight ( int number, int row, int column )
                         }
                     }
 
-                    printboard ( closed );
+                    if ( closed )
+                        printboard ( closed );
                 }
                 else
                     addKnight ( number+1, row+r, column+c );
