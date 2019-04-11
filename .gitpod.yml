@@ -1,0 +1,7 @@
+tasks:
+- init: >
+    mkdir -p build &&
+    cd build &&
+    cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 .. &&
+    make &&
+    cd ..

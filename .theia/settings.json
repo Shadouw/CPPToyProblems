@@ -1,0 +1,8 @@
+{
+   "cpp.buildConfigurations": [
+      {
+         "name": "Release",
+         "directory": "build"
+      }
+   ]
+}
