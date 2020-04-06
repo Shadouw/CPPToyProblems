@@ -1,7 +1,5 @@
+ 
 tasks:
 - init: >
-    mkdir -p build &&
-    cd build &&
-    cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 .. &&
-    make &&
-    cd ..
+    cmake -S. -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON &&
+    cmake --build build --target all 
